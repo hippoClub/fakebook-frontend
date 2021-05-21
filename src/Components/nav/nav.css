@@ -1,0 +1,36 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --primary-clr: #009ffd;
+  --secondary-clr: #1a181b;
+  --validation-clr1: #1c7c54;
+  --validation-clr2: #d1495b;
+  --bg-clr: #d2d2d2;
+}
+
+.search_bar {
+  max-width: 652px;
+  height: 40px;
+  position: relative;
+}
+
+.search_bar input {
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-clr);
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  font-size: 16px;
+  padding: 0 40px 0 10px;
+}
+
+.search_bar img {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
