@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import "./register.css"
 import DisplayMassage from "../massage/massage"
+import Logo from "../60x60.svg"
 
 const Register = () => {
   const [firstname, setFistName] = useState(null)
@@ -34,6 +35,10 @@ const Register = () => {
     <div className="container">
       {massage ? <DisplayMassage massage={massage} /> : ""}
       <div className="card_above">
+        <div className="Logo">
+          <img src={Logo} alt="Logo" />
+        </div>
+
         <form onSubmit={submitForm}>
           <div className="form-group">
             <label htmlFor="firstname">Firstname</label>
