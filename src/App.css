@@ -1,3 +1,22 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --primary-clr: #009ffd;
+  --secondary-clr: #1a181b;
+  --validation-clr1: #1c7c54;
+  --validation-clr2: #c76d79;
+  --bg-clr: #d2d2d2;
+  --foreground-clr: #fbfaf8;
+}
+
+body {
+  background-color: var(--bg-clr);
+}
+
 .header {
   display: flex;
   justify-content: space-between;

@@ -1,17 +1,3 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-:root {
-  --primary-clr: #009ffd;
-  --secondary-clr: #1a181b;
-  --validation-clr1: #1c7c54;
-  --validation-clr2: #d1495b;
-  --bg-clr: #d2d2d2;
-}
-
 .search_bar {
   max-width: 652px;
   height: 40px;
