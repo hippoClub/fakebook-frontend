@@ -1,14 +1,12 @@
 import React, { useState } from "react"
 import { Link } from "react-router-dom"
 
-import "./register.css"
+import "./login.css"
 import DisplayMassage from "../massage/massage"
 import Logo from "../60x60.svg"
 import { setUserSession } from "../../Utils/Common.js"
 
-const Register = () => {
-  const [firstname, setFistName] = useState(null)
-  const [lastname, setLastName] = useState(null)
+const Login = () => {
   const [email, setEmail] = useState(null)
   const [password, setPassword] = useState(null)
   const [massage, setMassage] = useState(null)
@@ -16,8 +14,8 @@ const Register = () => {
   const submitForm = async (e) => {
     e.preventDefault()
 
-    let registerInfo = { firstname, lastname, email, password }
-    let result = await fetch("http://localhost:8080/api/auth/register", {
+    let registerInfo = { email, password }
+    let result = await fetch("http://localhost:8080/api/auth/login", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -44,33 +42,12 @@ const Register = () => {
         <div className="Logo">
           <img src={Logo} alt="Logo" />
         </div>
-
         <form onSubmit={submitForm}>
-          <div className="form-group">
-            <label htmlFor="firstname">Firstname</label>
-            <br />
-            <input
-              type="text"
-              placeholder="John"
-              required
-              onChange={(e) => setFistName(e.target.value)}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="firstname">Lastname</label>
-            <br />
-            <input
-              type="text"
-              placeholder="Doe"
-              required
-              onChange={(e) => setLastName(e.target.value)}
-            />
-          </div>
           <div className="form-group">
             <label htmlFor="email">Email</label>
             <br />
             <input
-              type="email"
+              type="text"
               placeholder="john@doe.com"
               required
               onChange={(e) => setEmail(e.target.value)}
@@ -95,12 +72,12 @@ const Register = () => {
       </div>
       <div className="card_bellow">
         <p>Have an account?</p>
-        <Link to="/login">
-          <span>Login</span>
+        <Link to="/register">
+          <span>Register</span>
         </Link>
       </div>
     </div>
   )
 }
 
-export default Register
+export default Login
