@@ -1,0 +1,9 @@
+.massageContainer {
+  width: 21.75rem;
+  min-height: 2.5rem;
+  background-color: #db9d47;
+  color: var(--foreground-clr);
+  margin: 10px;
+  padding: 10px;
+  border-radius: 0.5rem;
+}
