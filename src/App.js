@@ -1,20 +1,22 @@
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import "./App.css"
+
 import Nav from "./Components/nav/nav"
 import Register from "./Components/register/register"
 import Login from "./Components/login/login"
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import Home from "./Components/home/home"
+import Upload from "./Components/upload/upload"
 
 function App() {
   return (
     <div className="App">
       <Router>
         <div className="header">
-          <Route exact path="/" component={Nav} />
+          <Nav />
         </div>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/upload" component="/upload" />
+          <Route path="/upload" component={Upload} />
           <Route path="/profile" component="/profile" />
         </Switch>
         <Switch>
