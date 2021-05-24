@@ -22,4 +22,6 @@ body {
   display: flex;
   justify-content: center;
   background-color: var(--foreground-clr);
+  position: sticky;
+  top: 0;
 }

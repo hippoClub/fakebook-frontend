@@ -1,11 +1,5 @@
 import React from "react"
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  NavLink,
-  Link,
-} from "react-router-dom"
+import { NavLink, Link } from "react-router-dom"
 
 import logo from "./logo.svg"
 import "./nav.css"
@@ -15,11 +9,11 @@ const nav = () => {
     <div className="nav">
       {/* Logo */}
       <div className="logo">
-        <Link>
-          <img src={logo} alt="Logo" activeClassName="active" to="/" />
+        <Link to="/">
+          <img src={logo} alt="Logo" />
         </Link>
       </div>
-
+      {/* NavLink */}
       <div className="linkList">
         <NavLink className="listItem" activeClassName="active" to="/" exact>
           Home
