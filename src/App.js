@@ -6,8 +6,9 @@ import Register from "./Components/register/register"
 import Login from "./Components/login/login"
 import Home from "./Components/home/home"
 import Upload from "./Components/upload/upload"
+import Profile from "./Components/profile/profile"
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <Router>
@@ -17,9 +18,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/upload" component={Upload} />
-          <Route path="/profile" component="/profile" />
-        </Switch>
-        <Switch>
+          <Route path="/profile" component={Profile} />
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
         </Switch>
