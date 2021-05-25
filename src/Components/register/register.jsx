@@ -6,7 +6,7 @@ import DisplayMassage from "../massage/massage"
 import Logo from "../60x60.svg"
 import { setUserSession } from "../../Utils/Common.js"
 
-const Register = () => {
+const Register = (props) => {
   const [firstname, setFistName] = useState(null)
   const [lastname, setLastName] = useState(null)
   const [email, setEmail] = useState(null)
@@ -31,10 +31,11 @@ const Register = () => {
       userId: response.userId,
       firstname: response.firstname,
       lastname: response.lastname,
-      email: response.email,
+      avatar: response.avatar,
     }
 
-    setUserSession(response.authToken, userInfo)
+    setUserSession(response.email, userInfo)
+    props.history.push("./")
   }
 
   return (
