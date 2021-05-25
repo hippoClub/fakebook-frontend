@@ -1,28 +1,17 @@
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import { BrowserRouter as Router } from "react-router-dom"
 import "./App.css"
 
 import Nav from "./Components/nav/nav"
-import Register from "./Components/register/register"
-import Login from "./Components/login/login"
-import Home from "./Components/home/home"
-import Upload from "./Components/upload/upload"
+import Routes from "./Routes/routers"
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <Router>
         <div className="header">
           <Nav />
         </div>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/upload" component={Upload} />
-          <Route path="/profile" component="/profile" />
-        </Switch>
-        <Switch>
-          <Route path="/register" component={Register} />
-          <Route path="/login" component={Login} />
-        </Switch>
+        <Routes />
       </Router>
     </div>
   )
