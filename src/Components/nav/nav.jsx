@@ -25,7 +25,6 @@ const nav = () => {
           Profile
         </NavLink>
       </div>
-
       <div className="avatar">
         <img src="https://source.unsplash.com/user/erondu/40x40" alt="" />
       </div>

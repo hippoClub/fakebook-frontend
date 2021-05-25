@@ -1,0 +1,34 @@
+textarea {
+  width: 100%;
+  height: 200px;
+  resize: none;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  padding: 10px;
+  background-color: var(--foreground-clr);
+  font-family: "Open Sans", sans-serif;
+  overflow: hidden;
+}
+
+input[type="file"] {
+  width: 94%;
+  height: 30px;
+  margin: 10px;
+  border: 1.5px solid var(--bg-clr);
+  border-radius: 5px;
+  background-color: var(--foreground-clr);
+  cursor: pointer;
+}
+
+input[type="file"]::file-selector-button {
+  height: inherit;
+  background-color: var(--bg-clr);
+  border: none;
+}
+
+.btn_custom {
+  width: 94%;
+  margin: 10px;
+  cursor: pointer;
+}
