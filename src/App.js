@@ -1,21 +1,18 @@
-import "./App.css"
-import Nav from "./Components/nav/nav"
-import Register from "./Components/register/register"
-import Login from "./Components/login/login"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+// import React, {useState} from "react"
+import "./App.css"
 
-function App() {
+import Nav from "./Components/nav/nav"
+import Routes from "./Routes/routers"
+
+const App = () => {
   return (
     <div className="App">
       <Router>
         <div className="header">
-          <Route exact path="/" component={Nav} />
+          <Nav />
         </div>
-
-        <Switch>
-          <Route path="/register" component={Register} />
-          <Route path="/login" component={Login} />
-        </Switch>
+        <Routes />
       </Router>
     </div>
   )
