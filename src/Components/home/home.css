@@ -43,10 +43,12 @@
 
 .imgPost img {
   width: 100%;
-  height: 100%;
+  height: auto;
   overflow: hidden;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: 50% 50%;
   border-radius: 0 0 5px 5px;
+  padding: 0 10px 10px 10px;
 }
