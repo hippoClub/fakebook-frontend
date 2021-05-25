@@ -5,16 +5,16 @@ export const getUser = () => {
   return null
 }
 // return the token from the session storage
-export const getToken = () => {
-  return sessionStorage.getItem("token") || null
+export const getEmail = () => {
+  return sessionStorage.getItem("email") || null
 }
 // remove the token and user from the session storage
 export const removeUserSession = () => {
-  sessionStorage.removeItem("token")
+  sessionStorage.removeItem("email")
   sessionStorage.removeItem("user")
 }
 // set the token and user from the session storage
-export const setUserSession = (token, user) => {
-  sessionStorage.setItem("token", token)
+export const setUserSession = (email, user) => {
+  sessionStorage.setItem("email", email)
   sessionStorage.setItem("user", JSON.stringify(user))
 }
