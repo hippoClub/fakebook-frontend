@@ -14,25 +14,25 @@ const Login = (props) => {
   const submitForm = async (e) => {
     e.preventDefault()
 
-    let registerInfo = { email, password }
-    let result = await fetch("http://localhost:8080/api/auth/login", {
+    const login = { email, password }
+    const result = await fetch("http://localhost:8080/api/auth/login", {
       method: "POST",
       headers: {
         "content-type": "application/json",
         Accept: "application/json",
       },
-      body: JSON.stringify(registerInfo),
+      body: JSON.stringify(login),
     })
-    let response = await result.json()
+    const response = await result.json()
 
-    let userInfo = {
-      userId: response.userId,
+    const userInfo = {
       firstname: response.firstname,
       lastname: response.lastname,
+      email: response.email,
       avatar: response.avatar,
     }
 
-    setUserSession(response.email, userInfo)
+    setUserSession(response.userId, userInfo)
 
     props.history.push("./")
   }
