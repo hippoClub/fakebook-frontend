@@ -28,13 +28,13 @@ const Register = (props) => {
     let response = await result.json()
 
     let userInfo = {
-      userId: response.userId,
       firstname: response.firstname,
       lastname: response.lastname,
+      email: response.email,
       avatar: response.avatar,
     }
 
-    setUserSession(response.email, userInfo)
+    setUserSession(response.userId, userInfo)
     props.history.push("./")
   }
 
