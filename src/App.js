@@ -1,12 +1,9 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+// import React, {useState} from "react"
 import "./App.css"
 
 import Nav from "./Components/nav/nav"
-import Register from "./Components/register/register"
-import Login from "./Components/login/login"
-import Home from "./Components/home/home"
-import Upload from "./Components/upload/upload"
-import Profile from "./Components/profile/profile"
+import Routes from "./Routes/routers"
 
 const App = () => {
   return (
@@ -15,13 +12,7 @@ const App = () => {
         <div className="header">
           <Nav />
         </div>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/upload" component={Upload} />
-          <Route path="/profile" component={Profile} />
-          <Route path="/register" component={Register} />
-          <Route path="/login" component={Login} />
-        </Switch>
+        <Routes />
       </Router>
     </div>
   )

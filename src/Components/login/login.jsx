@@ -6,7 +6,7 @@ import DisplayMassage from "../massage/massage"
 import Logo from "../60x60.svg"
 import { setUserSession } from "../../Utils/Common.js"
 
-const Login = () => {
+const Login = (props) => {
   const [email, setEmail] = useState(null)
   const [password, setPassword] = useState(null)
   const [massage, setMassage] = useState(null)
@@ -29,10 +29,12 @@ const Login = () => {
       userId: response.userId,
       firstname: response.firstname,
       lastname: response.lastname,
-      email: response.email,
+      avatar: response.avatar,
     }
 
-    setUserSession(response.authToken, userInfo)
+    setUserSession(response.email, userInfo)
+
+    props.history.push("./")
   }
 
   return (
