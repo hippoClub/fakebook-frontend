@@ -46,7 +46,6 @@ const Upload = (props) => {
         <div className="card">
           <form onSubmit={handleSubmit}>
             <textarea
-              name="post description"
               placeholder="What do you have in mind?"
               wrap="on"
               limit="255"
@@ -54,8 +53,6 @@ const Upload = (props) => {
             ></textarea>
             <input
               type="file"
-              id="img"
-              name="img"
               accept="image/png, image/jpeg"
               onChange={uploadImage}
             />
