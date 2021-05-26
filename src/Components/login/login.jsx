@@ -31,6 +31,7 @@ const Login = (props) => {
       email: response.email,
       avatar: response.avatar,
     }
+    if (response.error) return setMassage(response.error)
 
     setUserSession(response.userId, userInfo)
 
