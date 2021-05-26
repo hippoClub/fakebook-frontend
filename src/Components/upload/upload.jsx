@@ -27,7 +27,7 @@ const Upload = (props) => {
     e.preventDefault()
 
     const submitPost = { imgUrl, postDescription }
-    const id = sessionStorage.getItem("id")
+    const id = localStorage.getItem("id")
     await fetch(`http://localhost:8080/api/post/${id}/upload`, {
       method: "POST",
       headers: {

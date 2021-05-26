@@ -3,6 +3,7 @@ import "./home.css"
 
 const Home = () => {
   const [posts, setPosts] = useState([])
+  const [date, setDate] = useState("")
 
   useEffect(() => {
     fetchPosts()
@@ -12,6 +13,14 @@ const Home = () => {
     const result = await fetch("http://localhost:8080/api/post/allPost")
     const response = await result.json()
     setPosts(response)
+    response.map((res) => {
+      const selectDate = res.createdAt
+      const convertDate = new Date(selectDate)
+        .toJSON()
+        .slice(0, 19)
+        .replace("T", " ")
+      return setDate(convertDate)
+    })
   }
 
   return (
@@ -22,19 +31,24 @@ const Home = () => {
         {posts.map((post) => {
           return (
             <div className="card" key={post.postId}>
-              <div className="card_avatar">
-                <img
-                  src="https://source.unsplash.com/user/erondu/40x40"
-                  alt=""
-                />
-                <span>
-                  <strong>
-                    {post.firstname} {post.lastname} &nbsp;
-                  </strong>
-                </span>
-                <span>
-                  <small>-&nbsp; {post.createdAt}</small>
-                </span>
+              <div className="card-header">
+                <div className="card-header__avatar">
+                  <img
+                    src="https://source.unsplash.com/user/erondu/40x40"
+                    alt=""
+                  />
+                </div>
+                <div className="card-header__username">
+                  <span>
+                    <strong>
+                      {post.firstname} {post.lastname}
+                    </strong>
+                  </span>
+                  <br />
+                  <span>
+                    <small>{date}</small>
+                  </span>
+                </div>
               </div>
               <div className="postDescription">
                 <p>{post.postDescription}</p>

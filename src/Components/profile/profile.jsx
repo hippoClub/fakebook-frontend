@@ -1,53 +1,89 @@
-import React, { useState, useRef } from "react"
+import React, { useState, useEffect } from "react"
 import "./profile.css"
 import More from "./more.svg"
 import { Link } from "react-router-dom"
 
 const Profile = () => {
   const [open, setOpen] = useState(false)
+  const [date, setDate] = useState("")
+  const [posts, setPosts] = useState([])
+
+  useEffect(() => {
+    fetchPosts()
+  }, [])
+
+  const fetchPosts = async () => {
+    const id = localStorage.getItem("id")
+    const result = await fetch(
+      `http://localhost:8080/api/post//userPosts/${id}`
+    )
+    const response = await result.json()
+    setPosts(response)
+    response.map((res) => {
+      const selectDate = res.createdAt
+      const convertDate = new Date(selectDate)
+        .toJSON()
+        .slice(0, 19)
+        .replace("T", " ")
+      return setDate(convertDate)
+    })
+  }
 
   return (
     <div className="content_container">
       <div className="content">
         <h2 className="title">Profile</h2>
-        <div className="card">
-          <div className="card_avatar">
-            <img src="https://source.unsplash.com/user/erondu/40x40" alt="" />
-            <span>
-              <strong>Khalid Ibrahim &nbsp;</strong>
-            </span>
-            <span>
-              <small>-&nbsp; 24/05/2021</small>
-            </span>
-
-            <span className="more" onClick={() => setOpen(!open)}>
-              <img src={More} alt="" />
-              {open && (
-                <div class="dropdown-wrapper">
-                  <ul class="dropdown-menu">
-                    <li class="dropdown-menu__item">
-                      <a href="#d">Edit</a>
-                    </li>
-                    <li class="dropdown-menu__item">
-                      <a href="fasd">Delete</a>
-                    </li>
-                  </ul>
+        {/* Beginning card */}
+        {posts.map((post) => {
+          return (
+            <div className="card" key={post.postId}>
+              <div className="card-header">
+                <div className="card-header__avatar">
+                  <img
+                    src="https://source.unsplash.com/user/erondu/40x40"
+                    alt=""
+                  />
                 </div>
-              )}
-            </span>
-          </div>
-          <div className="postDescription">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Accusantium necessitatibus repellendus fugit sequi alias. Amet
-              maxime beatae recusandae ullam ipsam nam est unde repellendus
-              quidem totam, rerum aut corporis culpa.
-            </p>
-          </div>
-          <div className="imgPost">
-            <img src="https://source.unsplash.com/user/erondu/" alt="" />
-          </div>
-        </div>
+                <div className="card-header__username">
+                  <span>
+                    <strong>
+                      {post.firstname} {post.lastname}
+                    </strong>
+                  </span>
+                  <br />
+                  <span>
+                    <small>{date}</small>
+                  </span>
+                </div>
+                <div
+                  className="card-header__moreBtn"
+                  onClick={() => setOpen(!open)}
+                >
+                  <img src={More} alt="" />
+                  {open && (
+                    <div class="dropdown-wrapper">
+                      <ul class="dropdown-menu">
+                        <li class="dropdown-menu__item">
+                          <a href="#d">Edit</a>
+                        </li>
+                        <li class="dropdown-menu__item">
+                          <a href="fasd">Delete</a>
+                        </li>
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              </div>
+              <div className="postDescription">
+                <p>{post.postDescription}</p>
+              </div>
+              <div className="imgPost">
+                <img src={post.image} alt="" />
+              </div>
+            </div>
+          )
+        })}
+        {/* end of card */}
       </div>
     </div>
   )

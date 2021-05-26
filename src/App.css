@@ -27,4 +27,5 @@ body {
   background-color: var(--foreground-clr);
   position: sticky;
   top: 0;
+  z-index: 100000;
 }
