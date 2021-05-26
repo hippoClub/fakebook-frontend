@@ -5,12 +5,6 @@ import { Link } from "react-router-dom"
 
 const Profile = () => {
   const [open, setOpen] = useState(false)
-  const more = useRef(null)
-  const showDropdown = (e) => {
-    if (more.current && !more.current.contains(e.target)) {
-      setOpen(false)
-    }
-  }
 
   return (
     <div className="content_container">
@@ -26,7 +20,7 @@ const Profile = () => {
               <small>-&nbsp; 24/05/2021</small>
             </span>
 
-            <span className="more" onClick={showDropdown} ref={more}>
+            <span className="more" onClick={() => setOpen(!open)}>
               <img src={More} alt="" />
               {open && (
                 <div class="dropdown-wrapper">
