@@ -22,11 +22,11 @@
   margin-bottom: 20px;
 }
 
-.postDescription {
+.card-header__postDescription {
   padding: 0 10px 10px 10px;
 }
 
-.imgPost img {
+.card-header__imgPost .img {
   width: 100%;
   height: auto;
   overflow: hidden;

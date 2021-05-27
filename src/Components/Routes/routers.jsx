@@ -1,11 +1,12 @@
-import React, { useState } from "react"
+import React from "react"
 import { Switch, Route } from "react-router-dom"
-import PageNotFound from "../Components/404/pageNotFound"
-import Home from "../Components/home/home"
-import Upload from "../Components/upload/upload"
-import Profile from "../Components/profile/profile"
-import Register from "../Components/register/register"
-import Login from "../Components/login/login"
+import PageNotFound from "../../Components/Pages/pageNotFound/PageNotFound"
+import Home from "../../Components/Pages/home/home"
+import Upload from "../../Components/Pages/upload/upload"
+import EditPost from "../../Components/Pages/edit/edit"
+import Profile from "../../Components/Pages/profile/profile"
+import Register from "../../Components/Pages/register/register"
+import Login from "../../Components/Pages/login/login"
 import PrivateRoute from "./privateRoute"
 import PublicRoute from "./publicRoute"
 
@@ -14,6 +15,7 @@ const Routes = () => {
     <Switch>
       <PrivateRoute exact path="/" component={Home} />
       <PrivateRoute path="/upload" component={Upload} />
+      <PrivateRoute path="/edit/:postId" component={EditPost} />
       <PrivateRoute path="/profile" component={Profile} />
 
       <PublicRoute path="/register" component={Register} />

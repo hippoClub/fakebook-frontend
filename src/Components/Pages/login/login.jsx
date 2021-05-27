@@ -1,14 +1,12 @@
 import React, { useState } from "react"
 import { Link } from "react-router-dom"
 
-import "./register.css"
-import DisplayMassage from "../massage/massage"
+import "./login.css"
+import DisplayMassage from "../../Controls/massage/massage"
 import Logo from "../60x60.svg"
 import { setUserSession } from "../../Utils/Common.js"
 
-const Register = (props) => {
-  const [firstname, setFistName] = useState(null)
-  const [lastname, setLastName] = useState(null)
+const Login = (props) => {
   const [email, setEmail] = useState(null)
   const [password, setPassword] = useState(null)
   const [massage, setMassage] = useState(null)
@@ -16,18 +14,18 @@ const Register = (props) => {
   const submitForm = async (e) => {
     e.preventDefault()
 
-    let registerInfo = { firstname, lastname, email, password }
-    let result = await fetch("http://localhost:8080/api/auth/register", {
+    const login = { email, password }
+    const result = await fetch("http://localhost:8080/api/auth/login", {
       method: "POST",
       headers: {
         "content-type": "application/json",
         Accept: "application/json",
       },
-      body: JSON.stringify(registerInfo),
+      body: JSON.stringify(login),
     })
-    let response = await result.json()
+    const response = await result.json()
 
-    let userInfo = {
+    const userInfo = {
       firstname: response.firstname,
       lastname: response.lastname,
       email: response.email,
@@ -36,6 +34,7 @@ const Register = (props) => {
     if (response.error) return setMassage(response.error)
 
     setUserSession(response.userId, userInfo)
+
     props.history.push("./")
   }
 
@@ -46,33 +45,12 @@ const Register = (props) => {
         <div className="Logo">
           <img src={Logo} alt="Logo" />
         </div>
-
         <form onSubmit={submitForm}>
-          <div className="form-group">
-            <label htmlFor="firstname">Firstname</label>
-            <br />
-            <input
-              type="text"
-              placeholder="John"
-              required
-              onChange={(e) => setFistName(e.target.value)}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="firstname">Lastname</label>
-            <br />
-            <input
-              type="text"
-              placeholder="Doe"
-              required
-              onChange={(e) => setLastName(e.target.value)}
-            />
-          </div>
           <div className="form-group">
             <label htmlFor="email">Email</label>
             <br />
             <input
-              type="email"
+              type="text"
               placeholder="john@doe.com"
               required
               onChange={(e) => setEmail(e.target.value)}
@@ -97,12 +75,12 @@ const Register = (props) => {
       </div>
       <div className="card_bellow">
         <p>Have an account?</p>
-        <Link to="/login">
-          <span>Login</span>
+        <Link to="/register">
+          <span>Register</span>
         </Link>
       </div>
     </div>
   )
 }
 
-export default Register
+export default Login

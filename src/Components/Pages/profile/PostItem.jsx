@@ -5,13 +5,23 @@ import More from "./more.svg"
 
 const PostItem = ({ postItem, date }) => {
   const [open, setOpen] = useState(false)
-  //Edit post
-  console.log("postItem: ", postItem)
+
   //delete post
-  const deletePost = async () => {}
+  const deletePost = async () => {
+    const post_id = postItem.postId
+    const result = await fetch(
+      `http://localhost:8080/api/post/delete/${post_id}`,
+      {
+        method: "DELETE",
+      }
+    )
+    // const response = await result.json()
+
+    window.location.reload()
+  }
 
   return (
-    <div className="card" key={postItem.postId}>
+    <div className="card">
       <div className="card-header">
         <div className="card-header__avatar">
           <img src="https://source.unsplash.com/user/erondu/40x40" alt="" />
@@ -30,14 +40,12 @@ const PostItem = ({ postItem, date }) => {
         <div className="card-header__moreBtn" onClick={() => setOpen(!open)}>
           <img src={More} alt="" />
           {open && (
-            <div class="dropdown-wrapper">
-              <ul class="dropdown-menu">
-                <li class="dropdown-menu__item">
-                  <Link href="#d" onClick={deletePost}>
-                    Edit
-                  </Link>
+            <div className="dropdown-wrapper">
+              <ul className="dropdown-menu">
+                <li className="dropdown-menu__item">
+                  <Link to={`edit/${postItem.postId}`}>Edit</Link>
                 </li>
-                <li class="dropdown-menu__item">
+                <li className="dropdown-menu__item">
                   <Link
                     className="dropdown-menu__item__link"
                     onClick={deletePost}
@@ -50,11 +58,11 @@ const PostItem = ({ postItem, date }) => {
           )}
         </div>
       </div>
-      <div className="postDescription">
-        <p>{PostItem.postDescription}</p>
+      <div className="card-header__postDescription">
+        <p>{postItem.postDescription}</p>
       </div>
-      <div className="imgPost">
-        <img src={postItem.image} alt="" />
+      <div className="card-header__imgPost">
+        <img src={postItem.image} className="img" alt="" />
       </div>
     </div>
   )

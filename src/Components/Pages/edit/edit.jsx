@@ -1,10 +1,25 @@
-import React, { useState } from "react"
-import { getId } from "../../Utils/Common"
-import "./upload.css"
+import React, { useState, useEffect } from "react"
+import "../upload/upload.css"
 
-const Upload = (props) => {
+const EditPost = (props) => {
   const [postDescription, setPostDescription] = useState(null)
   const [imgUrl, setImgUrl] = useState(null)
+  const [postDesc, setPostDesc] = useState(null)
+  const [img, setImg] = useState(null)
+
+  useEffect(() => {
+    populatePost()
+  })
+
+  const populatePost = async () => {
+    const id = props.match.params.postId
+
+    const result = await fetch(`http://localhost:8080/api/post/getPost/${id}`)
+    const response = await result.json()
+    setPostDesc(response.postDescription)
+    console.log(postDescription)
+    setImg(response.postImgUrl)
+  }
 
   const uploadImage = async (e) => {
     const data = new FormData()
@@ -23,37 +38,41 @@ const Upload = (props) => {
     const response = await result.json()
     setImgUrl(response.secure_url)
   }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
 
     const submitPost = { imgUrl, postDescription }
-    const id = localStorage.getItem("id")
-    await fetch(`http://localhost:8080/api/post/${id}/upload`, {
-      method: "POST",
+    // console.log(postDescription)
+    const id = props.match.params.postId
+    await fetch(`http://localhost:8080/api/post/editPost/${id}`, {
+      method: "PUT",
       headers: {
         "content-type": "application/json",
       },
       body: JSON.stringify(submitPost),
     })
 
-    props.history.push("./")
+    props.history.push("/profile")
   }
 
   return (
     <div className="content_container">
       <div className="content">
-        <h2 className="title">Upload</h2>
+        <h2 className="title">Edit Post</h2>
         <div className="card">
           <form onSubmit={handleSubmit}>
             <textarea
               placeholder="What do you have in mind?"
               wrap="on"
               limit="255"
+              defaultValue={postDesc}
               onChange={(e) => setPostDescription(e.target.value)}
             ></textarea>
             <input
               type="file"
               accept="image/png, image/jpeg"
+              file={img}
               onChange={uploadImage}
             />
             <br />
@@ -62,9 +81,19 @@ const Upload = (props) => {
             </button>
           </form>
         </div>
+        <div className="card card-header__imgPost">
+          <h3 className="prev">Image preview</h3>
+          {img ? (
+            <img src={img} className="img" alt="" />
+          ) : (
+            <div className="imgNotFound">
+              <p>Image Not Found</p>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   )
 }
 
-export default Upload
+export default EditPost

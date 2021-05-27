@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import "./profile.css"
 import PostItem from "./PostItem"
 
-const Profile = () => {
+const Profile = (props) => {
   const [date, setDate] = useState("")
   const [posts, setPosts] = useState([])
 
@@ -30,7 +30,7 @@ const Profile = () => {
       <div className="content">
         <h2 className="title">Profile</h2>
         {posts.map((post) => (
-          <PostItem postItem={post} date={date} />
+          <PostItem postItem={post} date={date} key={post.postId} />
         ))}
       </div>
     </div>

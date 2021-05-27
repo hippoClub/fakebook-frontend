@@ -50,11 +50,11 @@ const Home = () => {
                   </span>
                 </div>
               </div>
-              <div className="postDescription">
+              <div className="card-header__postDescription">
                 <p>{post.postDescription}</p>
               </div>
-              <div className="imgPost">
-                <img src={post.image} alt="" />
+              <div className="card-header__imgPost">
+                <img className="img" src={post.image} alt="" />
               </div>
             </div>
           )
