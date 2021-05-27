@@ -9,13 +9,9 @@ const PostItem = ({ postItem, date }) => {
   //delete post
   const deletePost = async () => {
     const post_id = postItem.postId
-    const result = await fetch(
-      `http://localhost:8080/api/post/delete/${post_id}`,
-      {
-        method: "DELETE",
-      }
-    )
-    // const response = await result.json()
+    await fetch(`http://localhost:8080/api/post/delete/${post_id}`, {
+      method: "DELETE",
+    })
 
     window.location.reload()
   }
