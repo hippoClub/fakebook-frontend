@@ -14,6 +14,8 @@
 }
 
 body {
+  width: 100%;
+  height: 100%;
   background-color: var(--bg-clr);
   font-family: "Open Sans", sans-serif;
 }
@@ -25,8 +27,10 @@ body {
   background-color: var(--foreground-clr);
   position: sticky;
   top: 0;
+  z-index: 100000;
 }
 
-.hidden {
-  display: none;
+.prev,
+.imgNotFound {
+  padding: 10px;
 }
