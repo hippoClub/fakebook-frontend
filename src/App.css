@@ -30,6 +30,10 @@ body {
   z-index: 100000;
 }
 
+.hide {
+  display: none;
+}
+
 .prev,
 .imgNotFound {
   padding: 10px;

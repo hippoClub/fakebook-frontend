@@ -16,7 +16,7 @@
   color: var(--primary-clr) !important;
 }
 
-.listItem:hover {
+.listItem:active {
   color: var(--primary-clr) !important;
 }
 
@@ -31,4 +31,18 @@
   height: 35px;
   border-radius: 20px;
   border: 2px solid var(--bg-clr);
+}
+
+.logout button {
+  width: 60px;
+  height: 30px;
+  border: 1px solid var(--bg-clr);
+  border-radius: 5px;
+  background-color: var(--foreground-clr);
+  color: var(--secondary-clr);
+}
+
+.logout button:hover {
+  background-color: var(--bg-clr);
+  border: 1px solid var(--foreground-clr);
 }

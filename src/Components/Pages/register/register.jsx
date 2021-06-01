@@ -17,7 +17,7 @@ const Register = (props) => {
     e.preventDefault()
 
     let registerInfo = { firstname, lastname, email, password }
-    let result = await fetch("http://localhost:8080/api/auth/register", {
+    let result = await fetch("/api/auth/register", {
       method: "POST",
       headers: {
         "content-type": "application/json",

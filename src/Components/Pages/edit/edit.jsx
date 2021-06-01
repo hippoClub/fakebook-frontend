@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import "../upload/upload.css"
+import Nav from "../../Controls/nav/nav"
 
 const EditPost = (props) => {
   const [postDescription, setPostDescription] = useState(null)
@@ -45,7 +46,7 @@ const EditPost = (props) => {
     const submitPost = { imgUrl, postDescription }
     // console.log(postDescription)
     const id = props.match.params.postId
-    await fetch(`http://localhost:8080/api/post/editPost/${id}`, {
+    await fetch(`/api/post/editPost/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -57,42 +58,47 @@ const EditPost = (props) => {
   }
 
   return (
-    <div className="content_container">
-      <div className="content">
-        <h2 className="title">Edit Post</h2>
-        <div className="card">
-          <form onSubmit={handleSubmit}>
-            <textarea
-              placeholder="What do you have in mind?"
-              wrap="on"
-              limit="255"
-              defaultValue={postDesc}
-              onChange={(e) => setPostDescription(e.target.value)}
-            ></textarea>
-            <input
-              type="file"
-              accept="image/png, image/jpeg"
-              file={img}
-              onChange={uploadImage}
-            />
-            <br />
-            <button type="submit" className="btn btn_custom">
-              Post
-            </button>
-          </form>
-        </div>
-        <div className="card card-header__imgPost">
-          <h3 className="prev">Image preview</h3>
-          {img ? (
-            <img src={img} className="img" alt="" />
-          ) : (
-            <div className="imgNotFound">
-              <p>Image Not Found</p>
-            </div>
-          )}
+    <>
+      <div className="header">
+        <Nav />
+      </div>
+      <div className="content_container">
+        <div className="content">
+          <h2 className="title">Edit Post</h2>
+          <div className="card">
+            <form onSubmit={handleSubmit}>
+              <textarea
+                placeholder="What do you have in mind?"
+                wrap="on"
+                limit="255"
+                defaultValue={postDesc}
+                onChange={(e) => setPostDescription(e.target.value)}
+              ></textarea>
+              <input
+                type="file"
+                accept="image/png, image/jpeg"
+                file={img}
+                onChange={uploadImage}
+              />
+              <br />
+              <button type="submit" className="btn btn_custom">
+                Post
+              </button>
+            </form>
+          </div>
+          <div className="card card-header__imgPost">
+            <h3 className="prev">Image preview</h3>
+            {img ? (
+              <img src={img} className="img" alt="" />
+            ) : (
+              <div className="imgNotFound">
+                <p>Image Not Found</p>
+              </div>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 
