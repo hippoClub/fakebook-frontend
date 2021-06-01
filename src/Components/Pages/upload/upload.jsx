@@ -29,13 +29,16 @@ const Upload = (props) => {
 
     const submitPost = { imgUrl, postDescription }
     const id = localStorage.getItem("id")
-    await fetch(`/api/post/${id}/upload`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(submitPost),
-    })
+    await fetch(
+      `https://backend-hippo-club.herokuapp.com/api/post/${id}/upload`,
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(submitPost),
+      }
+    )
 
     props.history.push("/")
   }

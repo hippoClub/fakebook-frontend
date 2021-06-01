@@ -13,7 +13,9 @@ const Profile = () => {
   // fetch all user post
   const fetchPosts = async () => {
     const id = localStorage.getItem("id")
-    const result = await fetch(`/api/post/userPosts/${id}`)
+    const result = await fetch(
+      `https://backend-hippo-club.herokuapp.com/api/post/userPosts/${id}`
+    )
     const response = await result.json()
     setPosts(response)
     response.map((res) => {
