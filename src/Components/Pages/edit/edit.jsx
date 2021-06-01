@@ -46,13 +46,16 @@ const EditPost = (props) => {
     const submitPost = { imgUrl, postDescription }
     // console.log(postDescription)
     const id = props.match.params.postId
-    await fetch(`/api/post/editPost/${id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(submitPost),
-    })
+    await fetch(
+      `https://backend-hippo-club.herokuapp.com/api/post/editPost/${id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(submitPost),
+      }
+    )
 
     props.history.push("/profile")
   }

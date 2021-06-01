@@ -15,14 +15,17 @@ const Login = (props) => {
     e.preventDefault()
 
     const login = { email, password }
-    const result = await fetch("/api/auth/login", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify(login),
-    })
+    const result = await fetch(
+      "https://backend-hippo-club.herokuapp.com/api/auth/login",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(login),
+      }
+    )
     const response = await result.json()
 
     const userInfo = {

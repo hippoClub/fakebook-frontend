@@ -9,9 +9,12 @@ const PostItem = ({ postItem, date }) => {
   //delete post
   const deletePost = async () => {
     const post_id = postItem.postId
-    await fetch(`/api/post/delete/${post_id}`, {
-      method: "DELETE",
-    })
+    await fetch(
+      `https://backend-hippo-club.herokuapp.com/api/post/delete/${post_id}`,
+      {
+        method: "DELETE",
+      }
+    )
 
     window.location.reload()
   }

@@ -11,7 +11,9 @@ const Home = () => {
   }, [])
 
   const fetchPosts = async () => {
-    const result = await fetch("/api/post/allPost")
+    const result = await fetch(
+      "https://backend-hippo-club.herokuapp.com/api/post/allPost"
+    )
     const response = await result.json()
     setPosts(response)
     response.map((res) => {

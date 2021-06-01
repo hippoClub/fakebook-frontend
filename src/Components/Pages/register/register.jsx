@@ -17,14 +17,17 @@ const Register = (props) => {
     e.preventDefault()
 
     let registerInfo = { firstname, lastname, email, password }
-    let result = await fetch("/api/auth/register", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify(registerInfo),
-    })
+    let result = await fetch(
+      "https://backend-hippo-club.herokuapp.com/api/auth/register",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(registerInfo),
+      }
+    )
     let response = await result.json()
 
     let userInfo = {
