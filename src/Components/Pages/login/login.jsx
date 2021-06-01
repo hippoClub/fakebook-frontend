@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { Link } from "react-router-dom"
 
-import "./login.css"
+// import "./login.css"
 import DisplayMassage from "../../Controls/massage/massage"
 import Logo from "../60x60.svg"
 import { setUserSession } from "../../Utils/Common.js"
@@ -15,7 +15,7 @@ const Login = (props) => {
     e.preventDefault()
 
     const login = { email, password }
-    const result = await fetch("http://localhost:8080/api/auth/login", {
+    const result = await fetch("/api/auth/login", {
       method: "POST",
       headers: {
         "content-type": "application/json",

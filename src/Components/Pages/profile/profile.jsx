@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react"
 import "./profile.css"
 import PostItem from "./PostItem"
+import Nav from "../../Controls/nav/nav"
 
-const Profile = (props) => {
+const Profile = () => {
   const [date, setDate] = useState("")
   const [posts, setPosts] = useState([])
 
@@ -12,7 +13,7 @@ const Profile = (props) => {
   // fetch all user post
   const fetchPosts = async () => {
     const id = localStorage.getItem("id")
-    const result = await fetch(`http://localhost:8080/api/post/userPosts/${id}`)
+    const result = await fetch(`/api/post/userPosts/${id}`)
     const response = await result.json()
     setPosts(response)
     response.map((res) => {
@@ -26,14 +27,23 @@ const Profile = (props) => {
   }
 
   return (
-    <div className="content_container">
-      <div className="content">
-        <h2 className="title">Profile</h2>
-        {posts.map((post) => (
-          <PostItem postItem={post} date={date} key={post.postId} />
-        ))}
+    <>
+      <div className="header">
+        <Nav />
       </div>
-    </div>
+      <div className="content_container">
+        <div className="content">
+          <h2 className="title">Profile</h2>
+          {posts.length !== 0 ? (
+            posts.map((post) => (
+              <PostItem postItem={post} date={date} key={post.postId} />
+            ))
+          ) : (
+            <div>You don't have any post</div>
+          )}
+        </div>
+      </div>
+    </>
   )
 }
 

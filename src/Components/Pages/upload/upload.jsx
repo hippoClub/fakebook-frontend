@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import "./upload.css"
+import Nav from "../../Controls/nav/nav"
 
 const Upload = (props) => {
   const [postDescription, setPostDescription] = useState(null)
@@ -28,7 +29,7 @@ const Upload = (props) => {
 
     const submitPost = { imgUrl, postDescription }
     const id = localStorage.getItem("id")
-    await fetch(`http://localhost:8080/api/post/${id}/upload`, {
+    await fetch(`/api/post/${id}/upload`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -40,30 +41,35 @@ const Upload = (props) => {
   }
 
   return (
-    <div className="content_container">
-      <div className="content">
-        <h2 className="title">Upload</h2>
-        <div className="card">
-          <form onSubmit={handleSubmit}>
-            <textarea
-              placeholder="What do you have in mind?"
-              wrap="on"
-              limit="255"
-              onChange={(e) => setPostDescription(e.target.value)}
-            ></textarea>
-            <input
-              type="file"
-              accept="image/png, image/jpeg"
-              onChange={uploadImage}
-            />
-            <br />
-            <button type="submit" className="btn btn_custom">
-              Post
-            </button>
-          </form>
+    <>
+      <div className="header">
+        <Nav />
+      </div>
+      <div className="content_container">
+        <div className="content">
+          <h2 className="title">Upload</h2>
+          <div className="card">
+            <form onSubmit={handleSubmit}>
+              <textarea
+                placeholder="What do you have in mind?"
+                wrap="on"
+                limit="255"
+                onChange={(e) => setPostDescription(e.target.value)}
+              ></textarea>
+              <input
+                type="file"
+                accept="image/png, image/jpeg"
+                onChange={uploadImage}
+              />
+              <br />
+              <button type="submit" className="btn btn_custom">
+                Post
+              </button>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 
