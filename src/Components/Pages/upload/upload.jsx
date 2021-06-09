@@ -5,6 +5,7 @@ import Nav from "../../Controls/nav/nav"
 const Upload = (props) => {
   const [postDescription, setPostDescription] = useState(null)
   const [imgUrl, setImgUrl] = useState(null)
+  const [massage, setMassage] = useState(null)
 
   const uploadImage = async (e) => {
     const data = new FormData()
@@ -28,6 +29,12 @@ const Upload = (props) => {
     e.preventDefault()
 
     const submitPost = { imgUrl, postDescription }
+
+    if (submitPost.postDescription == null && submitPost.imgUrl == null)
+      return setMassage(
+        "This post appears to be blank. Please write something or attach a link or photo to post."
+      )
+
     const id = localStorage.getItem("id")
     await fetch(
       `https://backend-hippo-club.herokuapp.com/api/post/${id}/upload`,
@@ -57,7 +64,14 @@ const Upload = (props) => {
                 placeholder="What do you have in mind?"
                 wrap="on"
                 limit="255"
-                onChange={(e) => setPostDescription(e.target.value)}
+                onChange={(e) => {
+                  if (e.target.value == null) {
+                    setMassage(
+                      "This post appears to be blank. Please write something or attach a link or photo to post."
+                    )
+                  }
+                  setPostDescription(e.target.value)
+                }}
               ></textarea>
               <input type="file" accept="image/*" onChange={uploadImage} />
               <br />
@@ -65,6 +79,8 @@ const Upload = (props) => {
                 Post
               </button>
             </form>
+
+            <div className="errorMsg">{massage}</div>
           </div>
         </div>
       </div>

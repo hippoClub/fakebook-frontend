@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import React, { useState } from "react"
+import React from "react"
 import { NavLink, Link } from "react-router-dom"
 import { removeUserSession } from "../../Utils/Common"
 
