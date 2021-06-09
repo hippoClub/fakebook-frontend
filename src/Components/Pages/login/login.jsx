@@ -10,10 +10,11 @@ const Login = (props) => {
   const [email, setEmail] = useState(null)
   const [password, setPassword] = useState(null)
   const [massage, setMassage] = useState(null)
+  const [loading, setLoading] = useState(false)
 
   const submitForm = async (e) => {
     e.preventDefault()
-
+    setLoading(true)
     const login = { email, password }
     const result = await fetch(
       "https://backend-hippo-club.herokuapp.com/api/auth/login",
@@ -27,6 +28,8 @@ const Login = (props) => {
       }
     )
     const response = await result.json()
+
+    setLoading(false)
 
     const userInfo = {
       firstname: response.firstname,
@@ -70,8 +73,8 @@ const Login = (props) => {
             />
           </div>
           <div className="form-group">
-            <button type="submit" className="btn">
-              Sign up
+            <button type="submit" className="btn" disabled={loading}>
+              {loading ? "Loading..." : "Sign up"}
             </button>
           </div>
         </form>

@@ -7,6 +7,7 @@ import Logo from "../60x60.svg"
 import { setUserSession } from "../../Utils/Common.js"
 
 const Register = (props) => {
+  const [loading, setLoading] = useState(false)
   const [firstname, setFistName] = useState(null)
   const [lastname, setLastName] = useState(null)
   const [email, setEmail] = useState(null)
@@ -15,9 +16,9 @@ const Register = (props) => {
 
   const submitForm = async (e) => {
     e.preventDefault()
-
-    let registerInfo = { firstname, lastname, email, password }
-    let result = await fetch(
+    setLoading(true)
+    const registerInfo = { firstname, lastname, email, password }
+    const result = await fetch(
       "https://backend-hippo-club.herokuapp.com/api/auth/register",
       {
         method: "POST",
@@ -28,9 +29,11 @@ const Register = (props) => {
         body: JSON.stringify(registerInfo),
       }
     )
-    let response = await result.json()
+    const response = await result.json()
 
-    let userInfo = {
+    setLoading(false)
+
+    const userInfo = {
       firstname: response.firstname,
       lastname: response.lastname,
       email: response.email,
@@ -92,8 +95,8 @@ const Register = (props) => {
             />
           </div>
           <div className="form-group">
-            <button type="submit" className="btn">
-              Sign up
+            <button type="submit" className="btn" disabled={loading}>
+              {loading ? "Loading..." : "Sign up"}
             </button>
           </div>
         </form>
