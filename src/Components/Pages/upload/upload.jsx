@@ -59,11 +59,7 @@ const Upload = (props) => {
                 limit="255"
                 onChange={(e) => setPostDescription(e.target.value)}
               ></textarea>
-              <input
-                type="file"
-                accept="image/png, image/jpeg"
-                onChange={uploadImage}
-              />
+              <input type="file" accept="image/*" onChange={uploadImage} />
               <br />
               <button type="submit" className="btn btn_custom">
                 Post
