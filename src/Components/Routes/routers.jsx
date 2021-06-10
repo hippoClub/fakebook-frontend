@@ -18,8 +18,8 @@ const Routes = () => {
       <PrivateRoute exact path="/edit/:postId" component={EditPost} />
       <PrivateRoute exact path="/profile" component={Profile} />
 
-      <PublicRoute exact path="/register" component={Register} />
-      <PublicRoute exact path="/login" component={Login} />
+      <PublicRoute path="/register" component={Register} />
+      <PublicRoute path="/login" component={Login} />
 
       <Route component={PageNotFound} />
     </Switch>
