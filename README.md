@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+# Hippo Club
+
+##### Deployed app Link: https://hippo-club.herokuapp.com/login
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
