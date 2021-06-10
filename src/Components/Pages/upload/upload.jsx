@@ -56,7 +56,7 @@ const Upload = (props) => {
         <Nav />
       </div>
       <div className="content_container">
-        <div className="content">
+        <div>
           <h2 className="title">Upload</h2>
           <div className="card">
             <form onSubmit={handleSubmit}>
