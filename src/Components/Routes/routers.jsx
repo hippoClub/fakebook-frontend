@@ -14,12 +14,12 @@ const Routes = () => {
   return (
     <Switch>
       <PrivateRoute exact path="/" component={Home} />
-      <PrivateRoute path="/upload" component={Upload} />
-      <PrivateRoute path="/edit/:postId" component={EditPost} />
-      <PrivateRoute path="/profile" component={Profile} />
+      <PrivateRoute exact path="/upload" component={Upload} />
+      <PrivateRoute exact path="/edit/:postId" component={EditPost} />
+      <PrivateRoute exact path="/profile" component={Profile} />
 
-      <PublicRoute path="/register" component={Register} />
-      <PublicRoute path="/login" component={Login} />
+      <PublicRoute exact path="/register" component={Register} />
+      <PublicRoute exact path="/login" component={Login} />
 
       <Route component={PageNotFound} />
     </Switch>
