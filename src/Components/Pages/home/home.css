@@ -1,17 +1,5 @@
-.content_container {
-  width: 100%;
-  height: auto;
-  display: flex;
-  justify-content: center;
-}
-
-.content {
-  width: 37.5rem;
-  margin: 20px 0 0 155px;
-}
-
 .title {
-  margin-bottom: 20px;
+  margin: 20px 0;
 }
 
 .card {
